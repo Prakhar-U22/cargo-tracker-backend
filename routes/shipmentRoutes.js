@@ -4,8 +4,8 @@ const shipmentController = require('../controllers/shipmentController');
 
 // Define API endpoints
 router.get('/shipments', shipmentController.getAllShipments);
+router.get('/shipment/:id', shipmentController.getShipmentById);
 router.post('/shipment', shipmentController.createShipment);
 router.patch('/shipment/:id/update-location', shipmentController.updateShipmentLocation);
-
 
 module.exports = router;
