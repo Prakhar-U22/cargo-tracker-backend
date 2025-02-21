@@ -4,19 +4,19 @@ const connectDB = require('./config/db');
 const shipmentRoutes = require('./routes/shipmentRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-app.use(cors({ origin: 'https://cargo-tracker-frontend.vercel.app' })); 
-
 // Connect to MongoDB
 connectDB();
 
 // Routes
+app.get('/', (req, res) => {
+    res.send('Welcome to Cargo Tracker API');
+});
 app.use('/api', shipmentRoutes);
 
-// Start the server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
